@@ -1,0 +1,1 @@
+Nmap -sV --script=vuln localhost
