@@ -1,2 +1,3 @@
 Nmap -sV --script=vuln localhost
 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
+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
