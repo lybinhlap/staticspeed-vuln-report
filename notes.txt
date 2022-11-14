@@ -1,2 +1,1 @@
-Nmap -sV --script=vuln localhost
-git clone https://lybinhlap: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@github.com/lybinhlap/staticspeed-vuln-report
+nmap -sV --script=vuln localhost
