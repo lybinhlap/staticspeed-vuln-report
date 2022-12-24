@@ -1,0 +1,90 @@
+Starting Nmap 7.60 ( https://nmap.org ) at 2022-11-14 14:00 EST
+Pre-scan script results:
+| broadcast-avahi-dos: 
+|   Discovered hosts:
+|     224.0.0.251
+|   After NULL UDP avahi packet DoS (CVE-2011-1002).
+|_  Hosts are all up (not vulnerable).
+Nmap scan report for localhost (127.0.0.1)
+Host is up (0.000062s latency).
+Not shown: 990 closed ports
+PORT    STATE SERVICE     VERSION
+13/tcp  open  daytime
+17/tcp  open  qotd?
+| fingerprint-strings: 
+|   NULL: 
+|     The surest protection against temptation is cowardice.
+|_    Mark Twain
+21/tcp  open  ftp         vsftpd 2.0.8 or later
+|_sslv2-drown: 
+22/tcp  open  ssh         OpenSSH 7.6p1 Ubuntu 4 (Ubuntu Linux; protocol 2.0)
+23/tcp  open  telnet      Linux telnetd
+37/tcp  open  time        (32 bits)
+|_rfc868-time: 2022-11-14T19:01:08
+80/tcp  open  http        Apache httpd 2.4.29 ((Ubuntu))
+|_http-csrf: Couldn't find any CSRF vulnerabilities.
+|_http-dombased-xss: Couldn't find any DOM based XSS.
+|_http-server-header: Apache/2.4.29 (Ubuntu)
+|_http-stored-xss: Couldn't find any stored XSS vulnerabilities.
+139/tcp open  netbios-ssn Samba smbd 3.X - 4.X (workgroup: WORKGROUP)
+445/tcp open  netbios-ssn Samba smbd 3.X - 4.X (workgroup: WORKGROUP)
+631/tcp open  ipp         CUPS 2.2
+|_http-aspnet-debug: ERROR: Script execution failed (use -d to debug)
+|_http-server-header: CUPS/2.2 IPP/2.1
+| http-slowloris-check: 
+|   VULNERABLE:
+|   Slowloris DOS attack
+|     State: LIKELY VULNERABLE
+|     IDs:  CVE:CVE-2007-6750
+|       Slowloris tries to keep many connections to the target web server open and hold
+|       them open as long as possible.  It accomplishes this by opening connections to
+|       the target web server and sending a partial request. By doing so, it starves
+|       the http server's resources causing Denial Of Service.
+|       
+|     Disclosure date: 2009-09-17
+|     References:
+|       https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6750
+|_      http://ha.ckers.org/slowloris/
+1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+SF-Port17-TCP:V=7.60%I=7%D=11/14%Time=63729069%P=x86_64-pc-linux-gnu%r(NUL
+SF:L,47,"The\x20surest\x20protection\x20against\x20temptation\x20is\x20cow
+SF:ardice\.\n\t\t--\x20Mark\x20Twain\n");
+Service Info: Hosts: Welcome, UBU-USTUDENT; OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
+
+Host script results:
+| smb-vuln-cve-2017-7494: 
+|   VULNERABLE:
+|   SAMBA Remote Code Execution from Writable Share
+|     State: LIKELY VULNERABLE
+|     IDs:  CVE:CVE-2017-7494
+|     Risk factor: HIGH  CVSSv3: 7.5 (HIGH) (CVSS:3.0/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H)
+|       All versions of Samba from 3.5.0 onwards are vulnerable to a remote
+|       code execution vulnerability, allowing a malicious client to upload a
+|       shared library to a writable share, and then cause the server to load
+|       and execute it.
+|       
+|     Disclosure date: 2017-05-24
+|     Check results:
+|       Samba Version: 3.X - 4.X
+|       Writable share found. 
+|        Name: \\127.0.0.1\data
+|       File written to remote share, but unable to execute payload either due to unknown actual path, or the system may be patched.
+|     Extra information:
+|       All writable shares:
+|        Name: \\127.0.0.1\data
+|     References:
+|       https://www.samba.org/samba/security/CVE-2017-7494.html
+|_      https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-7494
+|_smb-vuln-ms10-054: false
+|_smb-vuln-ms10-061: false
+| smb-vuln-regsvc-dos: 
+|   VULNERABLE:
+|   Service regsvc in Microsoft Windows systems vulnerable to denial of service
+|     State: VULNERABLE
+|       The service regsvc in Microsoft Windows 2000 systems is vulnerable to denial of service caused by a null deference
+|       pointer. This script will crash the service if it is vulnerable. This vulnerability was discovered by Ron Bowes
+|       while working on smb-enum-sessions.
+|_          
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 72.35 seconds
