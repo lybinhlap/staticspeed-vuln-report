@@ -1,3 +1,5 @@
 nmap -sV --script=vuln localhost
 curl -s https://install.zerotier.com | sudo bash
-d3ecf5726d24cfe9
+
+Network ID: d3ecf5726d24cfe9
+
